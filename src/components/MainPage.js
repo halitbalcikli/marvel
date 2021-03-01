@@ -17,7 +17,7 @@ class MainPage extends Component {
         const response = await fetch(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=2c375dccf4ddab8379e201e07cff321b&hash=197d88701fdd45ed6ed89b3cfd2b3e98`);
         const json = await response.json();
 
-        const currentMarvel = json.data.results.slice(0, 5);
+        const currentMarvel = json.data.results.slice(0, 10);
         this.setState({marvel: json.data.results, currentMarvel: currentMarvel})
     };
 

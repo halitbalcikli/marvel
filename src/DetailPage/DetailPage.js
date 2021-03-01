@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from "react-router-dom";
+import { FaAngleLeft } from "react-icons/fa";
+
 import '../components/style.css';
 
 class DetailPage extends Component {
@@ -22,6 +24,12 @@ class DetailPage extends Component {
                     });
                 });
     }
+
+    onBackButtonClicked = () => {
+        if (this.props.history) {
+            this.props.history.goBack();
+        }
+    };
 
     render() {
         let characterData = this.state.comics;
@@ -49,6 +57,9 @@ class DetailPage extends Component {
 
         return (
             <div className={"container"}>
+                <div style={{ fontSize: 30}}>
+                    <FaAngleLeft onClick={this.onBackButtonClicked} />
+                </div>
                 <div className={"row elementSelector"}>
                     <div className={"col-md-3 col-sm-6 small-device"}>
                         <img
@@ -64,7 +75,8 @@ class DetailPage extends Component {
                 <div className={"row detail-section"}>
                     <div className={"title"}>Description</div>
                     <div className={"col-md-12"}>
-                        {getCurrentValue[0].description ? <div className={"description"}>{getCurrentValue[0].description} </div> :
+                        {getCurrentValue[0].description ?
+                            <div className={"description"}>{getCurrentValue[0].description} </div> :
                             <div className={"no-description"}>There is no description for this character</div>}
                     </div>
                 </div>
